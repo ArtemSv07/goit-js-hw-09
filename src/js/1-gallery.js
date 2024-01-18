@@ -72,21 +72,20 @@ const gallery = document.querySelector('.gallery');
 const fragment = document.createDocumentFragment();
 
 images.forEach((image) => {
-    const galleryItem = document.createElement('li');
-    galleryItem.classList.add('gallery-item');
 
-    const galleryLink = document.createElement('a');
-    galleryLink.classList.add('gallery-link');
-    galleryLink.href = image.original;
+  const galleryItem = document.createElement('li');
+  galleryItem.classList.add('gallery-item');
 
-    const galleryImage = document.createElement('img');
-    galleryImage.classList.add('gallery-image');
-    galleryImage.src = image.preview;
-    galleryImage.alt = image.description;
+  galleryItem.insertAdjacentHTML(
+    'beforeend',
+    `<a class="gallery-link" href="${image.original}">
+      <img class="gallery-image" src="${image.preview}" alt="${image.description}" />
+    </a>`
+  );
 
-    galleryLink.appendChild(galleryImage);
-    galleryItem.appendChild(galleryLink);
-    fragment.appendChild(galleryItem);
+  fragment.appendChild(galleryItem);
+
+
 });
 
 gallery.appendChild(fragment);
