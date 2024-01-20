@@ -25,7 +25,7 @@ try {
 }
 
 form.addEventListener("input", () => {
-  if (isFormFilled()) {
+ 
     const formData = new FormData(form);
     const formObject = {};
 
@@ -34,9 +34,7 @@ form.addEventListener("input", () => {
     });
 
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formObject));
-  } else {
-    localStorage.removeItem(STORAGE_KEY);
-  }
+
 });
 
 form.addEventListener("submit", (event) => {
